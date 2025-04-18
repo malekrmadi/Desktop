@@ -124,18 +124,27 @@ public class LoginForm extends JFrame {
         add(mainPanel);
     }
 
-    private void handleLogin() {
-        String username = usernameField.getText();
-        String password = new String(passwordField.getPassword());
-        
-        if (username.equals("admin") && password.equals("admin")) {
-            Dashboard dashboard = new Dashboard();
-            dashboard.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid credentials!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+private void handleLogin() {
+    String username = usernameField.getText();
+    String password = new String(passwordField.getPassword());
+
+    // Admin login
+    if (username.equals("admin") && password.equals("admin")) {
+        Dashboard dashboard = new Dashboard();
+        dashboard.setVisible(true);
+        this.setVisible(false);
+    } 
+    // Client login simplifié - un seul utilisateur client pour l'instant
+    else if (username.equals("client") && password.equals("client")) {
+        ClientDashboard dashboard = new ClientDashboard();
+        dashboard.setVisible(true);
+        this.setVisible(false);
+    } 
+    else {
+        JOptionPane.showMessageDialog(this, "Invalid credentials!", "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
+
 
     private void openRegistrationForm() {
         RegistrationForm registrationForm = new RegistrationForm();

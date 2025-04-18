@@ -1,0 +1,1 @@
+// Ce fichier a été supprimé car redondant avec LoginFrame qui contient déjà une méthode main. 
