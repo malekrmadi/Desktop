@@ -51,23 +51,29 @@ public class Dashboard extends JFrame {
 
         // Create button panel
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 1, 20, 20));
+        buttonPanel.setLayout(new GridLayout(5, 1, 20, 20));
         buttonPanel.setBackground(new Color(240, 240, 245));
 
         // Initialize buttons
         listApartmentsButton = new JButton("Apartments List");
         listClientsButton = new JButton("Clients List");
         listRentalsButton = new JButton("Rentals List");
+        JButton adminsButton = new JButton("Administrators");
+        JButton statsButton = new JButton("Statistics");
 
         // Style buttons
         styleMainButton(listApartmentsButton, new Color(0, 123, 255));
         styleMainButton(listClientsButton, new Color(40, 167, 69));
         styleMainButton(listRentalsButton, new Color(255, 193, 7));
+        styleMainButton(adminsButton, new Color(138, 43, 226)); // Purple for admins
+        styleMainButton(statsButton, new Color(23, 162, 184)); // Teal for statistics
 
         // Add buttons to panel
         buttonPanel.add(listApartmentsButton);
         buttonPanel.add(listClientsButton);
         buttonPanel.add(listRentalsButton);
+        buttonPanel.add(adminsButton);
+        buttonPanel.add(statsButton);
 
         // Create card panel for the buttons (to center them and add padding)
         JPanel cardPanel = new JPanel(new GridBagLayout());
@@ -80,6 +86,8 @@ public class Dashboard extends JFrame {
         listApartmentsButton.addActionListener(e -> openApartmentsList());
         listClientsButton.addActionListener(e -> openClientsList());
         listRentalsButton.addActionListener(e -> openLocationsList());
+        adminsButton.addActionListener(e -> openAdminsManagement());
+        statsButton.addActionListener(e -> openStatistics());
         logoutButton.addActionListener(e -> handleLogout());
 
         add(mainPanel);
@@ -137,5 +145,17 @@ public class Dashboard extends JFrame {
             loginForm.setVisible(true);
             this.dispose();
         }
+    }
+
+    private void openAdminsManagement() {
+        AdminsListFrame adminsFrame = new AdminsListFrame();
+        adminsFrame.setVisible(true);
+        this.dispose();
+    }
+
+    private void openStatistics() {
+        StatisticsFrame statsFrame = new StatisticsFrame();
+        statsFrame.setVisible(true);
+        this.dispose();
     }
 } 
